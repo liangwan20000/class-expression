@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 函数声明
+		function fn () {};
+		// 函数表达式
+		let Fn = function (name, age) {
+			this.name = name;
+			this.age = age;
+		};
+		Fn.prototype.seyhi = function () {
+			alert(this.name + 'hello');
+		};
+		let hello = new Fn('张三', 20);
+		hello.seyhi();
+		
+		// 类声明
+		class Parent {
+			// constructor是prototype的一个属性，指向prototype的构造函数
+			constructor (name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			// 就是原型方法
+			seyhi () {
+				alert(this.name + '你好');
+			}
+		}
+		let lisi = new Parent('李四', 20);
+		lisi.seyhi();
+
+		// 类表达式
+		let Student = class {
+			// constructor是prototype的一个属性，指向prototype的构造函数
+			constructor (name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			// 除了constructor,其他都是原型方法
+			seyhi () {
+				alert(this.name + '今年' + this.age);
+			}
+		}
+		new Student('王五', 20).seyhi();
+
+		// react对象
+		let React = {
+			Webpack: function (name) {
+				this.name = name;
+				this.seyhi = function (name) {
+					alert(this.name + '你好');
+				}
+			},
+			Component: class {
+				// constructor是prototype的一个属性，指向prototype的构造函数，所以constructor就是构造函数
+				constructor (name) {
+					this.name = name;
+				}
+				seyhi () {
+					alert(this.name + '你好');
+				}
+			}
+		}
+		// 在React中的函数不能直接添加原型方法，对象内部不支持webpack.prototype这样写，必须在外部添加原型方法
+		React.Webpack.prototype.sayhi = function(){
+			console.log('原型方法')
+		}
+		
+		let Web = new React.Component('如花');
+		Web.seyhi()
+		let com = new React.Webpack('赵六');
+		com.sayhi()
+	</script>
+</body>
+</html>

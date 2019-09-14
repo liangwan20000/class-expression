@@ -1,10 +1,14 @@
 import React from 'react';
 import './App.css';
 
+// 导入组件
+// 类表达式
+import Classexopression from './components/class-expression.js';
+
 function App() {
 	return (
 		<div>
-			行吗
+			<Classexopression name='张三'></Classexopression>
 		</div>
 	);
 }
