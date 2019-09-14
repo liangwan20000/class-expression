@@ -35,18 +35,27 @@
 		lisi.seyhi();
 
 		// 类表达式
-		let Student = class {
-			// constructor是prototype的一个属性，指向prototype的构造函数
-			constructor (name, age) {
-				this.name = name;
-				this.age = age;
-			}
-			// 除了constructor,其他都是原型方法
-			seyhi () {
-				alert(this.name + '今年' + this.age);
-			}
-		}
-		new Student('王五', 20).seyhi();
+		// let Student = class {
+		// 	// constructor是prototype的一个属性，指向prototype的构造函数
+		// 	constructor (name, age) {
+		// 		this.name = name;
+		// 		this.age = age;
+		// 	}
+		// 	// 除了constructor,其他都是原型方法
+		// 	seyhi () {
+		// 		alert(this.name + '今年' + this.age);
+		// 	}
+		// }
+		// new Student('王五', 20).seyhi();
+
+let Student = class extends Parent {
+	// constructor是prototype的一个属性，指向prototype的构造函数
+	constructor (name, age) {
+		// 表示父类的构造函数，并传递值
+		super(name);
+	}
+}
+new Student('wangwu', 20).seyhi();
 
 		// react对象
 		let React = {
@@ -70,7 +79,6 @@
 		React.Webpack.prototype.sayhi = function(){
 			console.log('原型方法')
 		}
-		
 		let Web = new React.Component('如花');
 		Web.seyhi()
 		let com = new React.Webpack('赵六');
