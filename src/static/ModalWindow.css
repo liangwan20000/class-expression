@@ -1,0 +1,30 @@
+.modal-window {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+	width: 50%;
+	height: 50%;
+	transform: translate(50%, 50%);
+	background-color: #fff;
+}
+.modal-title {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: #eee;
+	overflow: hidden;
+}
+.modal-title span:nth-child(1),.modal-title span:nth-child(2)  {
+	float: left;
+	display: block;
+	padding: 10px;
+	background-color: #fff;
+}
+.modal-title span:nth-child(2) {
+	float: right;
+}
