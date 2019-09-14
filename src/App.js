@@ -7,9 +7,35 @@ import './App.css';
 // 类延展操作
 // import Class from './components/parameter.js';
 // childen属性
-import Childen from './components/childen-demo.js';
+// import Childen from './components/childen-demo.js';
+import ModalWindow from './components/Modal-Window.js';
 
 class App extends React.Component {
+	// 构造函数
+	constructor (props) {
+		// 调用父类构造函数
+		super(props);
+		// 在state中设置状态位，控制模态窗口
+		this.state = {
+			switch: false
+		};
+		// 改变事件this指向
+		this.handleModal = this.handleModal.bind(this);
+		this.PropsFn = this.PropsFn.bind(this);
+	}
+	// 点击弹出模态窗口
+	handleModal = function () {
+		// 改变状态必须使用setState
+		this.setState({
+			switch: true
+		})
+	}
+	// 组件传值专用函数
+	PropsFn = function (state) {
+		this.setState({
+			switch: state
+		})
+	}
 	render () {
 		// let info = {
 		// 	name: '张三',
@@ -21,9 +47,10 @@ class App extends React.Component {
 		// let { name, ...other } = info;
 		return (
 			<div>
-				<Childen>
+				<button onClick={ this.handleModal }>点击</button>
+				{this.state.switch && <ModalWindow method={ this.PropsFn } title="图书列表">
 					<div>你好</div>
-				</Childen>
+				</ModalWindow>}
 			</div>
 		);
 	}
